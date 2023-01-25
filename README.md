@@ -1,2 +1,2 @@
 # changfish.github.io
-https://changyu.nycu.me/
+changfish.github.io
