@@ -1,48 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="event_test.css" />
-    <script type="text/javascript" src="event_test.js"></script>
+    <title>changyu web</title>
+    <link rel="stylesheet" href="main.css" />
+    <!-- <script type="text/javascript" src="event_test.js"></script> -->
+    <script
+      src="http://code.jquery.com/jquery-2.1.4.min.js"
+      type="text/javascript"
+    ></script>
+    </script>
     <meta charset="UTF-8" />
   </head>
   <body>
-    <fieldset>
-      <legend>introduction</legend>
-      <table border="1">
-        <tr>
-          <th>姓名:</th>
-          <th>張晉瑜</th>
-        </tr>
-        <tr>
-          <th>學歷:</th>
-          <th>test</th>
-        </tr>
-      </table>
-    </fieldset>
-    <fieldset>
-      <img
-        src="https://drive.google.com/uc?export=view&id=1XFH20-FiyHoKly9k2UVMiBAURZZgvKph"
-        width="302"
-        height="403"
-      />
-    </fieldset>
-    <fieldset>
-      <legend>零存整付試算:</legend>
-      <form id="depositform">
-        <input type="text" id="amount" name="amount" value="100" /><br />
-        <p>年利率(%):</p>
-        <input type="text" id="rate" value="3" /><br />
-        <p>期數</p>
-        <input type="text" id="period" name="period" value="5" /><br />
-        <input type="button" id="deposittype" value="試算" />
-        <input type="reset" />
-      </form>
-      <br />
-      <p id="result"></p>
-      <script>
-        var x = document.getElementById("deposittype");
-        x.addEventListener("click", clubsavings, false);
-      </script>
-    </fieldset>
+    <div class="menu">
+      <div class="personal">
+        <!-- <a>
+          <img src="1s94eUFOwSqZymfrLQlBVbdJTMznSFEHR.JPG" title="被檢屍">
+          <img src="1XFH20-FiyHoKly9k2UVMiBAURZZgvKph.JPG" title="環己烷">
+        </a> -->
+        <img
+          src="https://drive.google.com/uc?export=view&id=1XFH20-FiyHoKly9k2UVMiBAURZZgvKph"
+          title="環己烷"
+          style="display: block; margin: auto"
+        />
+        <img
+          src="https://drive.google.com/uc?export=view&id=1s94eUFOwSqZymfrLQlBVbdJTMznSFEHR"
+          title="被檢屍"
+          style="display: block; margin: auto"
+        />
+      </div>
+      <div class="title">
+        <span id="name">張晉瑜</span>
+      </div>
+      <div class="option">
+        <p>這邊要放一些選項</p>
+      </div>
+    </div>
+    <div class="intro">
+      <p>good</p>
+    </div>
   </body>
 </html>

@@ -1,0 +1,29 @@
+.menu {
+  float: left;
+  width: 300px;
+  height: 100vh;
+  background-color: rgb(240, 236, 227);
+}
+
+.intro {
+  width: 100vw;
+  height: 100vh;
+}
+
+.personal {
+  height: 40vh;
+}
+
+/* .personal > a > img {
+  width: 75%;
+  height: 100%;
+} */
+
+.personal > img {
+  width: 75%;
+  height: 100%;
+}
+
+.title {
+  text-align: center;
+}
