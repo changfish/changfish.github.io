@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>form</title>
+  </head>
+  <body>
+    <p>please fill in the information in the form</p>
+    <form action="data.py" method="post">
+      <fieldset>
+        <legend>personal information:</legend>
+        name:<input type="text" name="name" /><br />
+        account:<input type="text" name="account" /><br />
+        password(at least 8 words!):<input type="password" name="pwd" />
+        gender:<input type="radio" name="gender" value="male" checked />male
+        <input type="radio" name="gender" value="female" checked />female
+        <input
+          type="radio"
+          name="gender"
+          value="gender_other"
+          checked
+        />other<br />
+        education:
+        <select>
+          <option value="phd">Phd</option>
+          <option value="master">Master</option>
+          <option value="undergrade">Undergrade</option>
+          <option value="senion">Aenion</option>
+          <option value="other">Other</option></select
+        ><br />
+        birth:<input type="date" name="bday" /><br />
+        E-mail:<input type="email" name="email" /><br />
+      </fieldset>
+      <fieldset>
+        <legend>experience</legend>
+        <input type="checkbox" name="inv-exper" value="house" checked />house
+        <input type="checkbox" name="inv-exper" value="stock" checked />stock
+        <input type="checkbox" name="inv-exper" value="fund" checked />fund
+        <input
+          type="checkbox"
+          name="inv-exper"
+          value="warrant"
+          checked
+        />warrant
+        <input
+          type="checkbox"
+          name="inv-exper"
+          value="futureoption"
+          checked
+        />futureoption
+        <input type="checkbox" name="inv-exper" value="bond" checked />bond
+        <input
+          type="checkbox"
+          name="inv-exper"
+          value="savings"
+          checked
+        />savings<br />
+        <label for="writing_exper">inv exp mes:</label><br />
+        <textarea name="message" rows="10" cols="30"></textarea>
+      </fieldset>
+      <br />
+      <input type="submit" />
+      <button type="button" onclick="alert('good!')">button sent!</button>
+      <input type="reset" />
+    </form>
+  </body>
+</html>
