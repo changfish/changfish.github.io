@@ -22,8 +22,15 @@
 .personal > img {
   width: 75%;
   height: 100%;
+  display: block;
+  margin: auto;
 }
 
 .title {
   text-align: center;
+}
+
+.title > span {
+  font-size: 25px;
+  line-height: 80px;
 }
