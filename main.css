@@ -6,7 +6,7 @@
 }
 
 .intro {
-  width: 100vw;
+  width: 95vw;
   height: 100vh;
 }
 
@@ -30,7 +30,19 @@
   text-align: center;
 }
 
-.title > span {
+li {
+  font-size: 40px;
+}
+
+.title > a {
   font-size: 25px;
   line-height: 80px;
+}
+
+.main {
+  height: 80vh;
+}
+
+.creat_cc > p {
+  text-align: right;
 }
