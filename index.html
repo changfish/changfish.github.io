@@ -115,7 +115,7 @@
         ></textarea>
 
         <div>
-          <input type="submit" value="Submit" name="submit" />
+          <input id="submit" type="submit" value="Submit" name="submit" />
         </div>
       </form>
     </div>
@@ -145,74 +145,103 @@
         var resultElement = document.getElementById("result");
         resultElement.style.display = "none";
         resultElement.style.textAlign = "center";
-        fetch(scriptURL)
-          .then((response) => response.json())
-          .then((data) => {
-            cls = data["cls"];
-            host = data["host"];
-            for (var i = 0; i < cls.length; i++) {
-              var option = document.createElement("option");
-              option.value = cls[i];
-              option.textContent = cls[i];
-              option.style.color = "blue";
-              clsElement.appendChild(option);
+        loadData();
+        const button = document.getElementById("submit");
+        button.addEventListener("click", function () {
+          setTimeout(function () {
+            loadData();
+          }, 700);
+        });
+        function loadData() {
+          try {
+            var dpwtable = document.getElementById("dpw");
+            while (dpwtable.rows.length > 1) {
+              dpwtable.deleteRow(1);
             }
-            for (var i = 0; i < host.length; i++) {
-              var option = document.createElement("option");
-              option.value = host[i];
-              option.textContent = host[i];
-              option.style.color = "blue";
-              hostElement.appendChild(option);
+            var spdtable = document.getElementById("spd");
+            while (spdtable.rows.length > 1) {
+              spdtable.deleteRow(1);
             }
-            var keys = ["date", "host", "class", "title"];
-            //Date within the past week
-            var dpwElement = document.getElementById("dpw");
-            var newRow = document.createElement("tr");
-            for (var key of keys) {
-              var temCell = document.createElement("td");
-              temCell.style.textAlign = "center";
-              temCell.innerText = key;
-              newRow.append(temCell);
-            }
-            dpwElement.append(newRow);
-            for (var i = 0; i < data["dpw"][keys[0]].length; i++) {
+          } catch {}
+          fetch(scriptURL)
+            .then((response) => response.json())
+            .then((data) => {
+              //load the option
+              cls = data["cls"];
+              host = data["host"];
+              if (clsElement.length != cls.length) {
+                for (var i = 0; i < cls.length; i++) {
+                  var option = document.createElement("option");
+                  option.value = cls[i];
+                  option.textContent = cls[i];
+                  option.style.color = "blue";
+                  clsElement.appendChild(option);
+                }
+              }
+              if (hostElement.length != host.length) {
+                for (var i = 0; i < host.length; i++) {
+                  var option = document.createElement("option");
+                  option.value = host[i];
+                  option.textContent = host[i];
+                  option.style.color = "blue";
+                  hostElement.appendChild(option);
+                }
+              }
+              var keys = ["date", "host", "class", "title"];
+              //Date within the past week
               var dpwElement = document.getElementById("dpw");
-              var newRow = document.createElement("tr");
-              for (var key of keys) {
-                var temCell = document.createElement("td");
-                temCell.style.textAlign = "center";
-                temCell.innerText = data["dpw"][key][i];
-                newRow.append(temCell);
+              if (dpwElement.rows.length == 0) {
+                var newRow = document.createElement("tr");
+                for (var key of keys) {
+                  var temCell = document.createElement("td");
+                  temCell.style.textAlign = "center";
+                  temCell.innerText = key;
+                  newRow.append(temCell);
+                }
+                dpwElement.append(newRow);
               }
-              dpwElement.append(newRow);
-            }
 
-            //Schedule for the past three days
-            var spdElement = document.getElementById("spd");
-            var newRow = document.createElement("tr");
-            for (var key of keys) {
-              var temCell = document.createElement("td");
-              temCell.style.textAlign = "center";
-              temCell.innerText = key;
-              newRow.append(temCell);
-            }
-            spdElement.append(newRow);
-            for (var i = 0; i < data["spd"][keys[0]].length; i++) {
-              var spdElement = document.getElementById("spd");
-              var newRow = document.createElement("tr");
-              for (var key of keys) {
-                var temCell = document.createElement("td");
-                temCell.style.textAlign = "center";
-                temCell.innerText = data["spd"][key][i];
-                newRow.append(temCell);
+              for (var i = 0; i < data["dpw"][keys[0]].length; i++) {
+                var dpwElement = document.getElementById("dpw");
+                var newRow = document.createElement("tr");
+                for (var key of keys) {
+                  var temCell = document.createElement("td");
+                  temCell.style.textAlign = "center";
+                  temCell.innerText = data["dpw"][key][i];
+                  newRow.append(temCell);
+                }
+                dpwElement.append(newRow);
               }
-              spdElement.append(newRow);
-            }
-          })
-          .catch((error) => {
-            var resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = "Error fetching data: " + error;
-          });
+
+              //Schedule for the past three days
+              var spdElement = document.getElementById("spd");
+              if (spdElement.rows.length == 0) {
+                var newRow = document.createElement("tr");
+                for (var key of keys) {
+                  var temCell = document.createElement("td");
+                  temCell.style.textAlign = "center";
+                  temCell.innerText = key;
+                  newRow.append(temCell);
+                }
+                spdElement.append(newRow);
+              }
+              for (var i = 0; i < data["spd"][keys[0]].length; i++) {
+                var spdElement = document.getElementById("spd");
+                var newRow = document.createElement("tr");
+                for (var key of keys) {
+                  var temCell = document.createElement("td");
+                  temCell.style.textAlign = "center";
+                  temCell.innerText = data["spd"][key][i];
+                  newRow.append(temCell);
+                }
+                spdElement.append(newRow);
+              }
+            })
+            .catch((error) => {
+              var resultDiv = document.getElementById("result");
+              resultDiv.innerHTML = "Error fetching data: " + error;
+            });
+        }
       };
       const form = document.forms["google"];
       form.addEventListener("submit", (e) => {
@@ -225,7 +254,7 @@
             setTimeout(function () {
               resultElement.style.display = "inline-block";
               resultElement.innerText = "上傳成功！！！id=" + data.id;
-            }, 500);
+            }, 100);
           })
           .catch((error) => console.error("Error!", error.message));
       });
